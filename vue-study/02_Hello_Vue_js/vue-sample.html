@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Sample</title>
+</head>
+
+<body>
+  <div id="app">
+    {{ message }}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // 0. Vue - 생성자에 Vue 개발시 필요한 기능 정의됨 > 사용자가 재정의함 
+    new Vue({ // 1. Vue Instance 생성
+      el: "#app", // 2. el 속성으로 Vue Instance 가 그려질 지점 지정
+      data: { // 3. data 속성에서 message 값 지정
+        message: "Hello Vue.js!"
+      }
+    })
+  </script>
+</body>
+
+</html>
