@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Template Practice</title>
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <h3>{{ sampleMessage }}</h3>
+    </header>
+    <section>
+      <p v-bind:id="uid"></p>
+      <button v-on:click="clickBtn">[Alert]</button>
+
+      <ul v-if="flag">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        sampleMessage: "안녕하세요!",
+        uid: 10,
+        flag: true,
+      },
+      methods: {
+        clickBtn() {
+          console.log('hi')
+          alert('hi')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

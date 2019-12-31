@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript Template</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- {{ var a = 10 }} (X) 선언문 사용 불가능 -->
+    <!-- {{ if (true) {return 100} (X) 분기 구문 사용 불가능}} -->
+    {{ true ? 100 : 0 }} <!-- 삼항 연산자로 표현 가능 -->
+    <br>
+    {{ reversedMessage }}
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue JS!'
+      },
+      computed: { // 데이터 속성을 자동으로 계산해주는 속성 
+        reversedMessage: function() {
+          return this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

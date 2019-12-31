@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Computed 속성과 Watch 속성</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- computed 예제 -->
+    <p>{{ reversedMessage }}</p>
+
+    <!-- watch 예제 -->
+    <input v-model="message2">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // computed 속성의 장점
+    // 1. data 속성이 바뀌면 자동으로 다시 computed 연산
+    // 2. cashing: 연산 값 미리 저장하고 있다가 필요할 때 불러옴 > 화면에 여러번 쓰일 때 효율성
+    // data 가 변경되지 않는 한, 이전 값 캐싱 
+    new Vue({
+      el: "#app",
+      data: {
+        message: "Hello Vue JS!",
+        message2: "Hello Vue JS!",
+      },
+      computed: {
+        reversedMessage: function() {
+          temp = this.message.split('').reverse().join('')
+          return temp
+        }
+      },
+      // data 변화 (여기에서는 message2) 감지하면 > 자동으로 특정 로직 수행
+      watch: {
+        message2: function(data) { 
+          console.log("message2 의 값이 바뀝니다 : ", data)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
