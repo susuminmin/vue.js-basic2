@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Named View</title>
+</head>
+
+<body>
+  <!-- 같은 레벨에서 여러 개의 컴포넌트를 동시에 표시하는 라우팅 방식 -->
+  <div id="app">
+    <router-view name="header"></router-view>
+    <router-view></router-view>
+    <router-view name="footer"></router-view>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+  <script>
+
+    var Header = { template: `<p>This is Header</p>` }
+    var Body = { template: `<p>This is Body</p>` }
+    var Footer = { template: `<p>This is Footer</p>` }
+    var LoginHeader = { template: `<p>This is LoginHeader</p>` }
+    var LoginBody = { template: `<p>This is LoginBody</p>` }
+    var LoginFooter = { template: `<p>This is LoginFooter</p>` }
+
+    var routes = [
+      {
+        path: '/',
+        components: {
+          header: Header,
+          default: Body,
+          footer: Footer
+        }
+      },
+      {
+        path: '/login',
+        components: {
+          header: LoginHeader,
+          default: LoginBody,
+          footer: LoginFooter // header, default, footer 는 영역 지정, url 바뀜에 따라 그 파트에 들어갈 내용 바뀜! 
+        }
+      }
+    ]
+
+    var router = new VueRouter({
+      // routes: routes 안에 루트: ~~~ 바로 정의해도 되고... 위로 빼서 해도 됨
+      routes
+    })
+
+    var app = new Vue({
+      mode: 'history',
+      router
+    }).$mount('#app')
+  </script>
+</body>
+
+</html>
