@@ -1,4 +1,4 @@
-# news-curation
+# movie-search
 
 ## Project setup
 ```
